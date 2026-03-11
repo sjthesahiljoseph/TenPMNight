@@ -37,7 +37,8 @@ WindowCallback(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 	return result;
 }
 
-int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
+int
+WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
 {
 
 	WNDCLASSA windowClass = {0};
