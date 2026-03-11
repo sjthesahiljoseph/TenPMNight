@@ -3,11 +3,11 @@
 
 @echo off
 
-if not exist ..\build mkdir ..\build
+if not exist build mkdir build
 
-pushd ..\build
+pushd build
 
-cl ..\code\win32_platform.c
+cl ..\win32_platform.c
 
 popd
 
