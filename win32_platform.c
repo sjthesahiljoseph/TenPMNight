@@ -1,13 +1,13 @@
 
 
-#include <stdio.h>
+#include <windows.h>
 
-int main()
+int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
+			LPSTR lpCmdLine, int nShowCmd)
 {
 
-	printf("Win32 Platform\n");
+	return MessageBox(NULL, "TenPMNight", "TenPMNight", MB_ICONQUESTION);
 }
-
 
 
 
