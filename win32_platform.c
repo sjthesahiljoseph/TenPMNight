@@ -12,9 +12,29 @@ typedef int b32;
 
 global_variable b32 running = true;
 
-LRESULT WindowCallback(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
+intenal LRESULT
+WindowCallback(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 {
-	return DefWindowProc(hWnd, Msg, wParam, lParam);
+	LRESULT result = 0;
+	
+	switch (message)
+	{
+
+	case WM_QUIT:
+	case WM_DESTROY:
+	{
+		running = false;
+	}
+	break;
+
+	default:
+	{
+		result = DefWindowProc(hWnd, Msg, wParam, lParam);
+	}
+	
+	}
+	
+	return result;
 }
 
 int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
@@ -39,13 +59,18 @@ int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int n
 
 	while (running)
 	{
-
 		// Input
+		MSG message;
+
+		while (PeekMessage(&message, window, 0, 0, PM_REMOVE))
+		{
+			TranslateMessage(&message);
+			DispatchMessage(&message);
+		}
 
 		// Simulation
 
 		// Render
-		
 	}
 	
 }
