@@ -7,8 +7,10 @@ struct {
 	int width;
 	int height;
 	u32* pixels;
-	BITMAPINFO bitmap;
+	BITMAPINFO bitmapInfo;
 } typedef RenderBuffer;
+
+global_variable RenderBuffer renderBuffer;
 
 internal LRESULT
 WindowCallback(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
@@ -76,7 +78,7 @@ WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShow
 		
 
 		// Render
-		StretchDIBits(hdc, 0, 0, width, height, 0, 0, width, height, memory, &bitmapInfo, DIB_RGB_COLORS, SRCCOPY);
+		StretchDIBits(hdc, 0, 0, renderBuffer.width, renderBuffer.height, 0, 0, renderBuffer.width, renderBuffer.height, renderBuffer.pixels, &renderBuffer.bitmapInfo, DIB_RGB_COLORS, SRCCOPY);
 	}
 	
 }
