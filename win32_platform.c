@@ -1,4 +1,5 @@
 
+
 #include <windows.h>
 
 typedef int b32;
@@ -30,6 +31,7 @@ WindowCallback(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 	{
 		result = DefWindowProc(hWnd, Msg, wParam, lParam);
 	}
+	break;
 	
 	}
 	
@@ -55,8 +57,12 @@ WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShow
 	
 	RegisterClassA(&windowClass);
 	
-	HWND window = CreateWindowExA(0, windowClass.lpszClassName, windowClass.lpszClassName, WS_VISIBLE|WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, 1280, 720, 0, 0, 0, 0);
+	HWND window = CreateWindowExA(0, windowClass.lpszClassName, windowClass.lpszClassName,
+								  WS_VISIBLE|WS_OVERLAPPEDWINDOW, CW_USEDEFAULT,
+								  CW_USEDEFAULT, 1280, 720, 0, 0, 0, 0);
 
+	HDC hdc = GetDC(window);
+	
 	while (running)
 	{
 		// Input
@@ -70,7 +76,12 @@ WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShow
 
 		// Simulation
 
+		int width, height;
+		void* memory;
+		BITMAPINFO bitmapInfo;
+
 		// Render
+		StretchDIBits(hdc, 0, 0, width, height, 0, 0, width, height, memory, &bitmapInfo, DIB_RGB_COLORS, SRCCOPY);
 	}
 	
 }
