@@ -31,6 +31,14 @@ WindowCallback(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 	{
 		// This thing will get called when window initlaized, and when window resize.
 
+		RECT rect;
+		GetWindowRect(hWnd, &rect);
+
+		renderBuffer.width = rect.right - rect.left;
+		renderBuffer.height = rect.bottom - rect.top;
+
+		
+		
 		// Get Width & Height.
 
 		// Allocate the Buffer.
