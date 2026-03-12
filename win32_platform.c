@@ -1,16 +1,14 @@
 
+#include "utils.c"
 
 #include <windows.h>
 
-typedef int b32;
-
-#define global_variable static
-#define internal static
-
-#define true 1
-#define false 0
-
-global_variable b32 running = true;
+struct {
+	int width;
+	int height;
+	u32* pixels;
+	BITMAPINFO bitmap;
+} typedef RenderBuffer;
 
 internal LRESULT
 WindowCallback(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
@@ -75,10 +73,7 @@ WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShow
 		}
 
 		// Simulation
-
-		int width, height;
-		void* memory;
-		BITMAPINFO bitmapInfo;
+		
 
 		// Render
 		StretchDIBits(hdc, 0, 0, width, height, 0, 0, width, height, memory, &bitmapInfo, DIB_RGB_COLORS, SRCCOPY);
