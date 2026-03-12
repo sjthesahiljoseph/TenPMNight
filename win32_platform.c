@@ -27,6 +27,18 @@ WindowCallback(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 	}
 	break;
 
+	case WM_SIZE:
+	{
+		// This thing will get called when window initlaized, and when window resize.
+
+		// Get Width & Height.
+
+		// Allocate the Buffer.
+
+		// Fill the BitmapInfo.
+	}
+	break;
+
 	default:
 	{
 		result = DefWindowProc(hWnd, Msg, wParam, lParam);
