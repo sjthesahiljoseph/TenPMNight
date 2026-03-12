@@ -9,6 +9,8 @@ pushd build
 
 cl /nologo /Zi /FC ..\win32_platform.c user32.lib
 
+..\build\win32_platform.exe
+
 popd
 
 

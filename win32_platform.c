@@ -1,4 +1,3 @@
-// TODO(SJtheSahilJoseph): StretchDiBIts -> ....
 
 #include <windows.h>
 
@@ -12,12 +11,12 @@ typedef int b32;
 
 global_variable b32 running = true;
 
-intenal LRESULT
+internal LRESULT
 WindowCallback(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam)
 {
 	LRESULT result = 0;
 	
-	switch (message)
+	switch (Msg)
 	{
 
 	case WM_QUIT:
